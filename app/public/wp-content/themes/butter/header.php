@@ -58,7 +58,7 @@
 	</header>
   <!-- end Header --> 
 
-  	<?php if(!is_home()): ?>
+  	<?php if(is_home()): ?>
 		<div class="page-header four">
 			<div class="container">
 			<div class="col-md-6 left-padd0">
