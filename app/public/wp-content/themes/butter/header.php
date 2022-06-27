@@ -25,35 +25,49 @@
 <div id="page" class="site">
 	<a class="skip-link screen-reader-text" href="#primary"><?php esc_html_e( 'Skip to content', 'butter' ); ?></a>
 
-	<header id="masthead" class="site-header">
-		<div class="site-branding">
-			<?php
-			the_custom_logo();
-			if ( is_front_page() && is_home() ) :
-				?>
-				<h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
-				<?php
-			else :
-				?>
-				<p class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></p>
-				<?php
-			endif;
-			$butter_description = get_bloginfo( 'description', 'display' );
-			if ( $butter_description || is_customize_preview() ) :
-				?>
-				<p class="site-description"><?php echo $butter_description; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></p>
-			<?php endif; ?>
-		</div><!-- .site-branding -->
+	<header class="header headr-style-2"> 
+    	<!-- Menu -->
+		<div class="navbar yamm navbar-default">
+		<div class="container">
+			<div class="navbar-header">
+			<button type="button" data-toggle="collapse" data-target="#navbar-collapse-1" class="navbar-toggle"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
+			<a href="/" class="navbar-brand logo"></a> </div>
 
-		<nav id="site-navigation" class="main-navigation">
-			<button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><?php esc_html_e( 'Primary Menu', 'butter' ); ?></button>
+			<div id="navbar-collapse-1" class="navbar-collapse collapse pull-right dark-color nopadding">
 			<?php
-			wp_nav_menu(
-				array(
+				wp_nav_menu( array(
 					'theme_location' => 'menu-1',
-					'menu_id'        => 'primary-menu',
-				)
-			);
+					'container' => 'nav',
+					'menu_class' => 'nav navbar-nav',
+					'items_wrap' => '<ul id="%1$s" class="%2$s">%3$s</ul>',
+				) ); 
 			?>
-		</nav><!-- #site-navigation -->
-	</header><!-- #masthead -->
+			<div class="search-box no-display-phone">
+				<form class="navbar-form" role="search">
+				<div class="input-group">
+					<input type="text" class="form-control" placeholder="Search here...!">
+					<span class="input-group-btn">
+					<button type="reset" class="btn btn-default"><span class="fa fa-close"> <span class="sr-only">Close</span></span></button>
+					<button type="submit" class="btn btn-default"><span class="fa fa-search"> <span class="sr-only">Search here...!</span></span></button>
+					</span></div>
+				</form>
+			</div>
+			</div>
+		</div>
+		</div>
+	</header>
+  <!-- end Header --> 
+
+  	<?php if(!is_home()): ?>
+		<div class="page-header four">
+			<div class="container">
+			<div class="col-md-6 left-padd0">
+				<h3 class="font45 font-white uppercase">Blog Standard</h3>
+				<h4 class="font18 font-white font-thin m-top1">News and Events</h4>
+			</div>
+			<div class="col-md-6">
+				<div class="breadcrumbs"><a href="index.html">Home</a> <i>/</i> Blog</div>
+			</div>
+			</div>
+		</div>
+		<?php endif ?>

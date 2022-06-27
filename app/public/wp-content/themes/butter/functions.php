@@ -49,7 +49,7 @@ function butter_setup() {
 	// This theme uses wp_nav_menu() in one location.
 	register_nav_menus(
 		array(
-			'menu-1' => esc_html__( 'Primary', 'butter' ),
+			'menu-1' => esc_html__( 'Primary', 'butter' )
 		)
 	);
 
@@ -139,9 +139,44 @@ add_action( 'widgets_init', 'butter_widgets_init' );
  */
 function butter_scripts() {
 	wp_enqueue_style( 'butter-style', get_stylesheet_uri(), array(), _S_VERSION );
+	wp_enqueue_style( 'bootstrap', get_template_directory_uri().'/css/bootstrap.min.css', array(), _S_VERSION );
+	wp_enqueue_style( 'common-style', get_template_directory_uri().'/css/style.css', array(), _S_VERSION );
+	wp_enqueue_style( 'reset-style', get_template_directory_uri().'/css/reset.css', array(), _S_VERSION );
+	wp_enqueue_style( 'fontawesome', get_template_directory_uri().'/css/font-awesome/css/font-awesome.min.css', array(), _S_VERSION );
+	wp_enqueue_style( 'webfont', get_template_directory_uri().'/css/Simple-Line-Icons-Webfont/simple-line-icons.css', array(), _S_VERSION );
+	wp_enqueue_style( 'font', get_template_directory_uri().'/css/et-line-font/et-line-font.css', array(), _S_VERSION );
+	wp_enqueue_style( 'responsive', get_template_directory_uri().'/css/responsive-leyouts.css', array(), _S_VERSION, 'screen' );
+	wp_enqueue_style( 'main-menu', get_template_directory_uri().'/js/mainmenu/menu.css', array(), _S_VERSION );
+	wp_enqueue_style( 'masterslider-style', get_template_directory_uri().'/js/masterslider/style/style.css', array(), _S_VERSION );
+	wp_enqueue_style( 'masterslider', get_template_directory_uri().'/js/masterslider/style/masterslider.css', array(), _S_VERSION );
+	wp_enqueue_style( 'masterslider-default-style', get_template_directory_uri().'/js/masterslider/skins/default/style.css', array(), _S_VERSION );
+
+	wp_enqueue_style( 'cubeportfolio', get_template_directory_uri().'/js/cubeportfolio/css/cubeportfolio.min.css', array(), _S_VERSION );
+	wp_enqueue_style( 'sky-forms', get_template_directory_uri().'/js/form/css/sky-forms.css', array(), _S_VERSION );
+	wp_enqueue_style( 'animations', get_template_directory_uri().'/js/animations/css/animations.min.css', array(), _S_VERSION );
+
 	wp_style_add_data( 'butter-style', 'rtl', 'replace' );
 
 	wp_enqueue_script( 'butter-navigation', get_template_directory_uri() . '/js/navigation.js', array(), _S_VERSION, true );
+
+	wp_enqueue_script( 'jquery_min', get_template_directory_uri() . '/js/jquery.min.js', array(), _S_VERSION, true );
+	wp_enqueue_script( 'jquery', get_template_directory_uri() . '/js/jquery.js', array('jquery_min'), _S_VERSION, true );
+	wp_enqueue_script( 'bootstrap', get_template_directory_uri() . '/js/bootstrap.min.js', array('jquery_min'), _S_VERSION, true );
+
+	wp_enqueue_script( 'jquery-masterslider', get_template_directory_uri() . '/js/masterslider/jquery.easing.min.js', array(), _S_VERSION, true );
+	wp_enqueue_script( 'masterslider', get_template_directory_uri() . '/js/masterslider/masterslider.min.js', array(), _S_VERSION, true );
+
+	wp_enqueue_script( 'load-cubeportfolio-jquery-latest', get_template_directory_uri() . '/js/cubeportfolio/jquery-latest.min.js', array(), _S_VERSION, true );
+	wp_enqueue_script( 'load-cubeportfolio-jquery', get_template_directory_uri() . '/js/cubeportfolio/jquery.cubeportfolio.min.js', array(), _S_VERSION, true );
+
+	wp_enqueue_script( 'cubeportfolio-init', get_template_directory_uri() . '/js/cubeportfolio/main4.js', array(), _S_VERSION, true );
+
+	wp_enqueue_script( 'jquery-ui', get_template_directory_uri() . '/js/form/jquery-ui.min.js', array(), _S_VERSION, true );
+	wp_enqueue_script( 'jquery-form', get_template_directory_uri() . '/js/form/jquery.form.min.js', array(), _S_VERSION, true );
+	wp_enqueue_script( 'jquery-validate', get_template_directory_uri() . '/js/form/jquery.validate.min.js', array(), _S_VERSION, true );
+
+	wp_enqueue_script( 'sticky', get_template_directory_uri() . '/js/mainmenu/sticky.js', array(), _S_VERSION, true );
+	wp_enqueue_script( 'totop', get_template_directory_uri() . '/js/scrolltotop/totop.js', array(), _S_VERSION, true );
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
